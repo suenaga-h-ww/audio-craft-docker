@@ -13,7 +13,8 @@ WORKDIR /audiocraft
 RUN git clone https://github.com/facebookresearch/audiocraft.git .
 
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir flask boto3
+    pip install --no-cache-dir setuptools wheel flask boto3 && \
+    pip install git+https://git@github.com/facebookresearch/audiocraft
 
     # アプリケーションコードをコピー
 COPY app.py .
