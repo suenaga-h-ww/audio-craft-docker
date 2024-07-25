@@ -1,0 +1,16 @@
+services:
+  audiocraft:
+    build: .
+    image: audiocraft
+    ports:
+      - 7860:7860
+    volumes:
+      - $HOME/.cache:/root/.cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
