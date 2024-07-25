@@ -1,10 +1,13 @@
-from flask import Flask, request, send_file
+import os
+import boto3
 import torchaudio
+from flask import Flask, request 
 from audiocraft.models import MusicGen
 from audiocraft.data.audio import audio_write
 import os
 
 app = Flask(__name__)
+s3 = boto3.client("s3")
 
 # モデルのロード（アプリケーション起動時に1回だけ実行）
 model = MusicGen.get_pretrained('facebook/musicgen-melody')
@@ -36,8 +39,12 @@ def generate_audio():
         if not os.path.exists(output_path):
             raise FileNotFoundError(f"Failed to create file at {output_path}")
 
-        # 生成された音声ファイルを送信
-        return send_file(output_path, as_attachment=True)
+        # S3にアップロード
+        bucket = ""
+        key = ""
+        with open(output_path, 'rb') as f:
+            s3.put_object(Body=f, Bucket=bucket, Key=key)
+
     except Exception as e:
         # エラーログを出力
         app.logger.error(f"Error generating audio: {str(e)}")
