@@ -12,6 +12,6 @@ Download audio file into local.
 ```
 curl -X POST http://localhost:7860/generate_audio \
 -H "Content-Type: application/json" \
--d '{"prompt": "birds singing in forest", "duration": 5}' \
+-d '{"prompt": "lo-fi hiphop for study", "duration": 30}' \
 --output output.wav
 ```
