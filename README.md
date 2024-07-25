@@ -1,7 +1,7 @@
 audio craft docker project
 
 # use
-1. docker cpmpose
+1. docker compose
 ```
 docker-compose- up -d
 ```
