@@ -6,9 +6,11 @@ RUN apt update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/facebookresearch/audiocraft.git .
+# アプリケーションコードをコピー
+COPY . .
+RUN pip install flask boto3
 RUN pip install -e .
 
 EXPOSE 7860
-ENTRYPOINT ["python3"]
-CMD ["demos/magnet_app.py", "--listen", "0.0.0.0"]
+CMD ["python3", "app.py"]
 
