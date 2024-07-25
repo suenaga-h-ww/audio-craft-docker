@@ -17,10 +17,9 @@ model = MusicGen.get_pretrained('facebook/musicgen-melody')
 @app.route('/generate_audio', methods=['POST'])
 def generate_audio():
     prompt = request.json.get('prompt')
-    duration = request.json.get('duration', 10)  # デフォルトは10秒
 
     # 音楽生成パラメータの設定
-    model.set_generation_params(duration=duration)
+    model.set_generation_params(duration=10)
 
     try:
         # 音楽生成
