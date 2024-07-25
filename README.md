@@ -3,7 +3,7 @@ audio craft docker project
 # use
 1. docker cpmpose
 ```
-docker-compose- uo -d
+docker-compose- up -d
 ```
 
 1. http request
