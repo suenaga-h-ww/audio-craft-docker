@@ -1,9 +1,20 @@
 audio craft docker project
 
 # use
-1. docker cpmpose
+1. docker build
 ```
-docker-compose- uo -d
+docker build -t audiocraft .
+docker run -p 7860:7860 audiocraft
+```
+
+status check
+```
+docker ps
+```
+
+1. docker compose
+```
+docker compose- up -d
 ```
 
 1. http request
